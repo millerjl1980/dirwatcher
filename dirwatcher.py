@@ -27,7 +27,15 @@ def main():
         '------------------------------------------------------\n'
         .format(__file__, app_start_time.isoformat())
     )
-
+    uptime = datetime.datetime.now()-app_start_time
+    logger.info(
+        '\n'
+        '------------------------------------------------------\n'
+        '     Stopped {0}\n'
+        '     Uptime was {1}\n'
+        '------------------------------------------------------\n'
+        .format(__file__, str(uptime))
+    )
 
 
 
