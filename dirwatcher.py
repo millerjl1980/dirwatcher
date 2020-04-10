@@ -19,18 +19,18 @@ exit_flag = False
 # Logger
 logger = logging.getLogger(__file__)
 logging.basicConfig(
-        level=logging.DEBUG,
-        # filename='logfile.log',
-        format='%(asctime)s %(levelname)s %(message)s', 
-        datefmt='%Y-%m-%d %H:%M:%S'
-    )
+    level=logging.DEBUG,
+    # filename='logfile.log',
+    format='%(asctime)s %(levelname)s %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 
 def signal_handler(sig_num, frame):
     """
-    This is a handler for SIGTERM and SIGINT. 
+    This is a handler for SIGTERM and SIGINT.
     Other signals can be mapped here as well (SIGHUP?)
-    Basically it just sets a global flag, and main() 
+    Basically it just sets a global flag, and main()
     will exit it's loop if the signal is trapped.
     :param sig_num: The integer signal number that was trapped from the OS.
     :param frame: Not used
@@ -103,7 +103,7 @@ def main():
         f'Started: {app_start_time}\n'
         f'{"-"*40}\n'
     )
-    # Hook these two signals from the OS .. 
+    # Hook these two signals from the OS ..
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
     while not exit_flag:
@@ -118,7 +118,7 @@ def main():
             logger.warning('Attempting to stabilize program')
         # put a sleep inside my while loop so I don't peg the cpu usage at 100%
         time.sleep(3.0)
-    uptime = datetime.datetime.now()-app_start_time
+    uptime = datetime.datetime.now() - app_start_time
     logger.info(
         '\n'
         f'{"-"*40}\n'
